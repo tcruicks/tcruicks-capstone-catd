@@ -12,7 +12,6 @@ How should the project be structured? For this project, which is primarily inten
 |--* data/
    |--* inputs/
    |--* outputs/
-|--* assets/
 |--* library/
    |--* __init__.py
    |--* utils.py
@@ -34,7 +33,7 @@ NOTES.md
 
 ### "Library" as module name
 
-There are as many opinions as options for python project structure, especially for storing local modules. I've seen `bin`, `lib`, `library`, `src`, `local`, `utils` and more explicit names used for local code. For the sake of simplicity we use `library` as the directory name for our modules and `utils.py` for functions and `models.py` for classes, unless a more specific name better captures the purpose of the code within. 
+There are as many opinions as options for python project structure, especially for storing local modules. I've seen `bin`, `lib`, `library`, `src`, `local`, `utils` and more explicit names used for local code. For the sake of simplicity we use `library` as the directory name for our modules and `utils.py` for functions and `models.py` for classes, unless a more specific name better captures the purpose of the code within.
 
 ChatGPT offers these conventions:
 
@@ -56,76 +55,6 @@ if project_path not in sys.path:
 from library import utils
 ```
 
-## Configuration File
-
-The project uses a configuration file to share parameters such as the geometries of met stations and field boundaries. We've chosen YAML over INI due to the support for multiple data types. 
-
-The config file looks like
-
-```yaml
-metpoints:
-  corn: [-121.5351, 38.1091]
-  alfalfa: [-121.4993, 38.0992]
-
-aoi_coordinates:
-    alfalfa: [
-        [-121.504670, 38.100631],
-        [-121.501246, 38.101757],
-        [-121.498513, 38.098168],
-        [-121.501920, 38.097003]
-    ]
-```
-
-To read the configuration file
-
-```python
-with open("config.yml","r") as f:
-    config_object=yaml.safe_load(f)
-```
-
-`safe_load` prevents code injection. While not likely in this case, its a good opportunity to practice a best practice.
-
-YAML returns tuples as strings, so we can quickly convert a list of coordinates using
-
-```python
-[tuple(pair) for pair in config_object['aoi_coordinates']['alfalfa']]
-```
-
-### Why not Configparser?
-
-Although `configparser` is a standard library for python, YAML is a [better choice for complex configurations](https://www.honeybadger.io/blog/python-ini-vs-yaml/). Converting lists of coordinates from string is too cumbersome using `.ini` files and `Configparser`.
-
-For example, to get a simple pair of coordinates, you must define a lambda function for lists (although you might not want every list to return as a float!).
-
-```python
-from configparser import ConfigParser
-import json
-#Read config.ini file
-config_object = ConfigParser(converters={'list': lambda x: [float(i.strip()) for i in x.split(',')]})
-config_object.read("config.ini")
-config_object.getlist('METPOINTS', 'corn')
-# [-121.5351, 38.1091]
-```
-
-## Outline
-
-- Show project locations (Alfalfa and Corn)
-- Describe Ameriflux data (dates, variables, etc.)
-  - Is there a variable that corresponds to real time crop stress?
-- Describe LST data (dates, spatial extent, components)
-  - Key illustration: gif showing true color imagery vs LST over time
-- Design decisions
-  - Points vs field average
-- Compare NDVIs
-  - Key finding: 2021 Landsat data are disrupting data 
-- NDVI vs LST
-  - References
-    - 2010-NDVI and LST for Drought Assessment
-- Explore TDVI
-- Explore CATD
-  - Key Finding: No expected relationship vs VPD
-- 
-
 ```bash
 !jupyter nbconvert \
     --to html /workspaces/*.ipynb \
@@ -133,4 +62,3 @@ config_object.getlist('METPOINTS', 'corn')
     --no-input \
     --TagRemovePreprocessor.remove_cell_tags='{"remove_cell"}'
 ```
-
