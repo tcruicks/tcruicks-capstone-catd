@@ -1,4 +1,5 @@
 [![DOI](https://zenodo.org/badge/627146632.svg)](https://zenodo.org/badge/latestdoi/627146632)
+
 # Remotely Sensed Crop Stress Early Indicator
 
 Can satellite remote sensing detect early stage crop stress at high resolution across whole-farm scale?
@@ -15,13 +16,13 @@ See the blog post [here](https://eriktuck.github.io/lst-crop-stress-capstone/).
 We thank Joe McGlinchy of Hydrosat for providing project guidance and data access.
 
 # Environment
-To reproduce this workflow, use the provided `environment.yml` file to create a `conda` environment (you should already have Python and `conda` installed on your system).
+To reproduce this workflow, use the provided `tcruicks-final-catd.yml` file to create a `conda` environment (you should already have Python and `conda` installed on your system).
 
 After cloning this directory to your system, use the following `bash` commands to create and activate the environment:
 
 ```bash
 conda env create -f environment.yml
-conda activate ea-lst
+conda activate ea-lst-alpha
 ```
 
 You must have Jupyter Notebook installed on your system to run this analysis. For installation instructions, consult the documentation [here](https://jupyter.org/).
@@ -29,7 +30,7 @@ You must have Jupyter Notebook installed on your system to run this analysis. Fo
 Once Jupyter Notebook is installed, install the iPython kernel in the environment. With the environment activated, in bash use the command:
 
 ```bash
-ipython kernel install --name ea-lst --user
+ipython kernel install --name ea-lst-alpha --user
 ```
 
 The `--name` flag specifies the name the kernel will appear under when selecting it to use with Jupyter Notebooks. It's best to name it the same as the environment name.
