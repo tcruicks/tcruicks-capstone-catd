@@ -72,6 +72,19 @@ Open the file [Here](https://github.com/tcruicks/tcruicks-capstone-catd/blob/mas
   
 Note that Hydrosat does not currently include coverage for the entire CONUS area and so confirm the coverage of data for any new meteorological tower location.
 
+## Visuals created by code
+
+1. Folium map of study locations
+2. Plot of Sentinel 2 mean NDVI and variance
+3. Plot of Sentinel 2 mean NDVI only.
+4. Boxplot of all Sentinel 2 AOI NDVI values.
+5. Plots of CATD for all fusion assets.
+6. Plot of CATD for fusion CATD only.
+7. Boxplots for AOI CATD values for all fusion assets.
+8. Plot of time-series mean fusion CATD and NDVI.
+9. Plot of time-series single pixel fusion CATD and NDVI.
+10. Optional plots of air temperature, wind speed, and relative humidity
+
 ## Convert to HTML report
 To convert the file `blog.ipynb` to an HTML report, you must have the library `nbconvert` installed (note that this library is not included in this project's environment; read the [documentation](https://nbconvert.readthedocs.io/en/latest/) for installation instructions). 
 
