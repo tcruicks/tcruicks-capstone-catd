@@ -6,14 +6,26 @@ Can satellite remote sensing detect early stage crop stress at high resolution a
 
 Hydrosat produces a proprietary "fused" thermal infrared land surface temperature (LST) imagery product using sharpening and interpolation algorithms to produce near daily sub-30 m resolution imagery from a combination of MODIS, Sentinel and Landsat imaging platforms. This project aims to explore the input data and intermediate outputs of the algorithms used to produce the LST product in order to detect errors potentially introduced by data quality issues or the application of the algorithms while also exploring applications within agricultural contexts.
 
-See the blog post [here](https://eriktuck.github.io/lst-crop-stress-capstone/).
+See the blog post [here](https://tcruicks.github.io/blog.html).
+
+Github Repository: [here](https://github.com/tcruicks/tcruicks-capstone-catd/tree/master)
 
 # Collaborators and Acknowledgements
 
 - [Erik Anderson](https://github.com/eriktuck)
 - [Tyler Cruickshank](https://github.com/tcruicks)
 - [Joe McGlinchy](https://github.com/joemcglinchy)
+
 We thank Joe McGlinchy of Hydrosat for providing project guidance and data access.
+
+# Directory structure and explanation
+
+* `library/`: This directory stores modularized code for use in the notebook. This allows the library module to be imported directly (as opposed to a "src layout that would need to be installed).
+* `exploratory/`: A place for the main project Jupyter notebook.
+* `assets/`: stores images and gifs used in the final blog
+* `secrets/`: store individuals credentials here, so that anyone can run anyone else's code, provided they have input their own credentials in the correct format.
+* `data/`: holds ameriflux met data and hrrr model data which can be used instead of observed met data.
+* `blog/`: holds project blog.html file and images.  Also holds the project notebook titled blog.ipynb.
 
 # Environment
 To reproduce this workflow, use the provided `tcruicks-final-catd.yml` file to create a `conda` environment (you should already have Python and `conda` installed on your system).
@@ -52,18 +64,14 @@ Meteorological data are provided by [Ameriflux](https://ameriflux.lbl.gov/) and 
 # Workflows
 Follow the instructions below to reproduce the workflows in the notebook `blog.ipynb` and convert the Jupyter Notebook to an HTML report.
 
-## Run the analysis
-To reproduce the analysis in `blog.ipynb`, first follow the instructions to set up the environment and access data, described above. 
+## Setup the analysis
+To reproduce the analysis in [here](https://tcruicks.github.io/blog.html), first follow the instructions to set up the environment and access data, described above. 
 
-Open the file `blog.ipynb` in a Jupyter Notebook and run all cells to repeat the analysis. To change the crop locations for the analysis of NDVI (`f1`) and the analysis of CATD (`f2`), change the `f1_met_tower` and `f2_met_tower` variables (see Configuration below to add your own locations). For information on how to launch a Jupyter Notebook, consult the documentation [here](https://jupyter.org/).
+Open the file [Here](https://github.com/tcruicks/tcruicks-capstone-catd/blob/master/exploratory/tcruicks-final-catd.ipynb) in a Jupyter Notebook.
 
-## Configuration
-
-This project uses a configuration file to facilitate repeat workflows on new Ameriflux meteorological towers. To repeat the analysis on a new met tower, add the necessary information to the file `config.yml` by copy/pasting an existing configuration section and updating with the necessary parameters. You must include 
-  - the longitude, latitude for the meteorological tower center point, 
-  - the the longitude, latitude for the ag field center point, 
-  - either a bounding box (list of four coordinates) or area of interest (list of four longitude, latitude pairs), and 
-  - the parameters for reading the Ameriflux data. 
+1) Cell #3: Create a creds.json file with your STAC id and password.  Place the file in /secrets/creds.json.
+2) Cell #4: Analysis name (& number), crop field center points, met tower locations, crop field area of interest box coordinates (AOI), coordinates for point extractions. * To create and get AOI coords, use Google Earth to draw a polygon.  Export the polygon as a KML file.  Open KML file and grab the coordinates.
+3) Now you can run the analysis.  Note that some code cells may take up to an hour to run.
   
 Note that Hydrosat does not currently include coverage for the entire CONUS area and so confirm the coverage of data for any new meteorological tower location.
 
