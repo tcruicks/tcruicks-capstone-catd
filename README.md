@@ -21,7 +21,7 @@ We thank Joe McGlinchy of Hydrosat for providing project guidance and data acces
 # Directory structure and explanation
 
 * `library/`: This directory stores modularized code for use in the notebook. This allows the library module to be imported directly (as opposed to a "src layout that would need to be installed).
-* `exploratory/`: A place for the main project Jupyter notebook.
+* `exploratory/`: A place for the main project Jupyter notebook and .py script modules.
 * `assets/`: stores images and gifs used in the final blog
 * `secrets/`: store individuals credentials here, so that anyone can run anyone else's code, provided they have input their own credentials in the correct format.
 * `data/`: holds ameriflux met data and hrrr model data which can be used instead of observed met data.
@@ -33,7 +33,7 @@ To reproduce this workflow, use the provided `tcruicks-final-catd.yml` file to c
 After cloning this directory to your system, use the following `bash` commands to create and activate the environment:
 
 ```bash
-conda env create -f environment.yml
+conda env create -f tcruicks-final-catd.yml
 conda activate ea-lst-alpha
 ```
 
@@ -60,9 +60,6 @@ For access to Hydrosat's proprietary products, you must receive credentials usin
 See the [Hydrosat Fusion Hub Documentation](https://hydrosat.github.io/fusion-hub-docs/intro.html) for additional guidance.
 
 Meteorological data are provided by [Ameriflux](https://ameriflux.lbl.gov/) and included in the project's `data/Ameriflux` directory.
-
-# Workflows
-Follow the instructions below to reproduce the workflows in the notebook `blog.ipynb` and convert the Jupyter Notebook to an HTML report.
 
 ## Setup the analysis
 To reproduce the analysis in [here](https://tcruicks.github.io/blog.html), first follow the instructions to set up the environment and access data, described above. 
@@ -92,3 +89,24 @@ git commit -am "updating gh-pages"
 git push origin gh-pages
 git checkout main
 ```
+
+## Issues 
+The processing of the imagery is extremely computationally intensive.  Some code cells require one hour to execute.  Internet traffic can interrupt processing as well. 
+
+## Needed Improvements
+The notebook needs to be re-organized to seperate the processing of dataarrays from the actual analaysis because of computational intensive nature.  The current notebook makes use of loops to process all of the image assets.  In some ways. this makes the code more complicated because of the different specs of each image asset and the size of the AOI being use.
+
+## How to Cite
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Cruickshank"
+  given-names: "Tyler"
+- family-names: "Erik"
+  given-names: "Anderson"
+- family-names: "Joeseph"
+  given-names: "McGlinchy"
+title: ">Early Detection of Crop Stress From Thermal Infrared Imagery"
+version: 1.0
+date-released: 2023-09-01
+url: "https://github.com/tcruicks/tcruicks-capstone-catd/tree/master"

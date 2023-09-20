@@ -1,6 +1,7 @@
+# NOTEBOOK FUNCTIONS
 # ---------------------------------------------------------------------------------
 
-def stac_tile_search(collection, geom, start_date, end_date):
+def stac_tile_search(collection, geom, start_date, end_date, catalog):
     """
     Log into STAC and search for a specified image collection.
 

@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Cruickshank"
+  given-names: "Tyler"
+- family-names: "Erik"
+  given-names: "Anderson"
+- family-names: "Joeseph"
+  given-names: "McGlinchy"
+title: ">Early Detection of Crop Stress From Thermal Infrared Imagery"
+version: 1.0
+date-released: 2023-09-01
+url: "https://github.com/tcruicks/tcruicks-capstone-catd/tree/master"

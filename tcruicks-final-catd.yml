@@ -10,4 +10,5 @@ dependencies:
   - ipykernel
   - pystac-client
   - seaborn
+  - json
 prefix: /opt/miniconda3/envs/ea-lst-alpha
