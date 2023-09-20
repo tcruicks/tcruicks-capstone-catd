@@ -47,7 +47,7 @@ ipython kernel install --name ea-lst-alpha --user
 
 The `--name` flag specifies the name the kernel will appear under when selecting it to use with Jupyter Notebooks. It's best to name it the same as the environment name.
 
-# Data
+# STAC Login Credentials Setup.
 
 For access to Hydrosat's proprietary products, you must receive credentials using the instructions described at the [Hydrosat Fusion Hub](https://hydrosat.github.io/fusion-hub-docs/intro.html). Add your credentials to the `secrets/` folder in a file called `creds.json` with the format:
 
